@@ -2,7 +2,7 @@
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 # check IIS 
-While ((Get-WindowsFeature Web-Server).InstallState -eq "Installed")
+While ((Get-WindowsFeature Web-Server).InstallState -eq "Installed"){
 if ((Get-WindowsFeature Web-Server).InstallState -eq "Installed") {
     Write-Host "IIS is installed on $vm"
 } 
@@ -12,7 +12,7 @@ else {
 # Wait for IIS installing
 Wait-Event -Timeout 30
 }
-
+}
 #Import-Module
 Import-Module -Name WebAdministration
 
