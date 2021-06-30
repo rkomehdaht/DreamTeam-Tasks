@@ -1,5 +1,5 @@
 # install IIS and subfeatures
-Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
     # check IIS 
     While ((Get-WindowsFeature Web-Server).InstallState -eq "Installed"){
@@ -14,10 +14,10 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
     }
     }
 #Import-Module
-Import-Module -Name WebAdministration
+    Import-Module -Name WebAdministration
 
 # check picture from internet 
-  $url = "https://lifeandjoy.ru/uploads/posts/2014-07/1406568288_lifrandjoy.ru_26.jpg"
+    $url = "https://lifeandjoy.ru/uploads/posts/2014-07/1406568288_lifrandjoy.ru_26.jpg"
 
     # create the request.
     $HTTP_Request = [System.Net.WebRequest]::Create('https://lifeandjoy.ru/uploads/posts/2014-07/1406568288_lifrandjoy.ru_26.jpg')
@@ -40,16 +40,16 @@ Import-Module -Name WebAdministration
     Else { $HTTP_Response.Close() }
 
 # change picture in destination folder
-   Invoke-WebRequest -Uri $url -OutFile "C:\inetpub\wwwroot\iisstart.png"
+    Invoke-WebRequest -Uri $url -OutFile "C:\inetpub\wwwroot\iisstart.png"
    
     # check of chainging
     Wait-Event -Timeout 5
     $diff=((ls C:\inetpub\wwwroot\iisstart.png).LastWriteTime - (Get-Date)).TotalSeconds
-    if ($diff -gt -1) {
-        Write-Output "picture is chaingin"
+    if ($diff -gt -10) {
+        Write-Output "picture is chainging"
     }
     Else {
-        Write-Host "picture isn't chaingin"
+        Write-Host "picture isn't chainging"
     }
 
 <# check site 
